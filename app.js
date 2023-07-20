@@ -8,7 +8,7 @@ const fetchPokemon = () => {
   fetch(generationUrl)
     .then((res) => res.json())
     .then((generationData) => {
-      const generations = generationData.results.slice(0, 4);
+      const generations = generationData.results.slice(0, 1);
       const generationButtons = generations.map((generation) => {
         const generationName = generation.name.substring(11);
         return `<button class="filter-button bg-violet-500 hover:bg-violet-600 px-4 py-2 rounded-md font-medium text-white shadow-sm text-sm transition-all uppercase" data-generation="${generationName}">GEN ${generationName}</button>`;
@@ -20,7 +20,7 @@ const fetchPokemon = () => {
       addFilterListeners();
 
       const promises = [];
-      for (let i = 1; i <= 493; i++) {
+      for (let i = 1; i <= 151; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         promises.push(fetch(url).then((res) => res.json()));
       }
